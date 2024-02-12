@@ -15,6 +15,10 @@ require_once('application/libraries/LanguageTask.php');
 class Cpp_Task extends Task {
 
     public function __construct($filename, $input, $params) {
+        $params['cputime'] = 0.5;    // Cpp tasks run fast AF
+        $params['memorylimit'] = 10; // 10 MB
+        $params['numprocs'] = 1; // Disallow other prcoess shenanigans
+
         parent::__construct($filename, $input, $params);
         $this->default_params['compileargs'] = array(
             '-Wall',
